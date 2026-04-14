@@ -25,7 +25,7 @@ export default function DashboardPage() {
     socket.emit('join', user.id);
     socket.on('match-found', () => setNotification('A potential match was found for one of your items.'));
     socket.on('new-message', () => setNotification('You received a new message.'));
-    return () => socket.disconnect();
+    return () => { socket.disconnect(); };
   }, [user]);
 
   const updateStatus = async (id: string, status: string) => {
